@@ -38,18 +38,18 @@ Given the following data structure for an expression:
 
 ```rust
 struct Operator {
-	Addition,
-	Subtraction,
-	Multiplication,
-	Division,
-	Exponent,
-	Negative
+    Addition,
+    Subtraction,
+    Multiplication,
+    Division,
+    Exponent,
+    Negative
 }
 
 struct Expression {
-	Binary(Operator, Box<Expression>, Box<Expression>),
-	Unary(Operator, Box<Expression>),
-	Number(i64)
+    Binary(Operator, Box<Expression>, Box<Expression>),
+    Unary(Operator, Box<Expression>),
+    Number(i64)
 }
 ```
 
@@ -59,17 +59,17 @@ Note: This doesn't take into acccount overflows, so doing something like `2 ^ 90
 
 ```rust
 impl Expression {
-	fn eval(self) -> i64 {
-		match self {
-			Number(n) => *n,
-			Binary(Operator::Addition, expr1, expr2) => expr1.eval() + expr2.eval(),
-			Binary(Operator::Subtraction, expr1, expr2) => expr1.eval() - expr2.eval(),
-			Binary(Operator::Multiplication, expr1, expr2) => expr1.eval() * expr2.eval(),
-			Binary(Operator::Division, expr1, expr2) => expr1.eval() / expr2.eval(),
-			Binary(Operator::Exponent, expr1, expr2) => expr1.eval().pow(expr2.eval() as u32),
-			Unary(Operator::Negative, expr) => -1 * expr.eval(),
-			_ => panic!("invalid")
-		}
-	}
+    fn eval(self) -> i64 {
+        match self {
+            Number(n) => *n,
+            Binary(Operator::Addition, expr1, expr2) => expr1.eval() + expr2.eval(),
+            Binary(Operator::Subtraction, expr1, expr2) => expr1.eval() - expr2.eval(),
+            Binary(Operator::Multiplication, expr1, expr2) => expr1.eval() * expr2.eval(),
+            Binary(Operator::Division, expr1, expr2) => expr1.eval() / expr2.eval(),
+            Binary(Operator::Exponent, expr1, expr2) => expr1.eval().pow(expr2.eval() as u32),
+            Unary(Operator::Negative, expr) => -1 * expr.eval(),
+            _ => panic!("invalid")
+        }
+    }
 }
 ```
