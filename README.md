@@ -53,7 +53,7 @@ struct Expression {
 }
 ```
 
-I wrote an extremely naive recursive function which parses an expression. This will probably overflow the stack for extremely large and/or nested expressions, but it's easy to understand :)
+I wrote an extremely naive recursive function which evaluates an expression. This will probably overflow the stack for extremely large and/or nested expressions, but it's easy to understand :)
 
 Note: This doesn't take into acccount overflows, so doing something like `2 ^ 9032` will overflow an `i64` and cause a panic.
 
